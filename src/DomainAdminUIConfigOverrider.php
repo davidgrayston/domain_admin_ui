@@ -11,6 +11,14 @@ use Drupal\Core\Language\LanguageInterface;
  */
 class DomainAdminUIConfigOverrider extends DomainConfigOverrider {
   /**
+   * {@inheritDoc}
+   * @see \Drupal\domain_config\DomainConfigOverrider::getDomainConfigName()
+   */
+  public function getDomainConfigName($name, DomainInterface $domain) {
+    return parent::getDomainConfigName($name, $domain);
+  }
+
+  /**
    * Set the domain.
    *
    * @param DomainInterface $domain

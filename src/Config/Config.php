@@ -31,6 +31,8 @@ class Config extends CoreConfig {
   public function save($has_trusted_data = FALSE) {
     // Remember original config name.
     $originalName = $this->name;
+    $data = $this->data;
+    $originalData = $this->originalData;
 
     try {
       // Get domain config name for saving.
@@ -44,16 +46,25 @@ class Config extends CoreConfig {
 
       // Switch to use domain config name and save.
       $this->name = $domainConfigName;
+
+      // Only save changes and existing overrides.
+      $changedData = $this->arrayRecursiveDiff($this->data, $this->originalData);
+      $this->originalData = [];
+      $this->data = array_merge(array_intersect_key($this->data, $this->moduleOverrides), $changedData);
       parent::save($has_trusted_data);
     }
     catch (\Exception $e) {
       // Reset back to original config name if save fails and re-throw.
       $this->name = $originalName;
+      $this->data = $data;
+      $this->originalData = $originalData;
       throw $e;
     }
 
     // Reset back to original config name after saving.
     $this->name = $originalName;
+    $this->data = $data;
+    $this->originalData = $originalData;
 
     return $this;
   }
@@ -83,4 +94,31 @@ class Config extends CoreConfig {
     return $configNames['langcode'];
   }
 
+  /**
+   * Check config differences recusively.
+   *
+   * @param unknown $aArray1
+   * @param unknown $aArray2
+   * @return unknown[]|unknown[][]
+   */
+  protected function arrayRecursiveDiff($aArray1, $aArray2) {
+    $aReturn = array();
+
+    foreach ($aArray1 as $mKey => $mValue) {
+      if (array_key_exists($mKey, $aArray2)) {
+        if (is_array($mValue)) {
+          $aRecursiveDiff = $this->arrayRecursiveDiff($mValue, $aArray2[$mKey]);
+          if (count($aRecursiveDiff)) { $aReturn[$mKey] = $aRecursiveDiff; }
+        } else {
+          if ($mValue != $aArray2[$mKey]) {
+            $aReturn[$mKey] = $mValue;
+          }
+        }
+      } else {
+        $aReturn[$mKey] = $mValue;
+      }
+    }
+
+    return $aReturn;
+  }
 }

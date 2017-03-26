@@ -36,7 +36,7 @@ class SwitchForm extends FormBase {
     // Create fieldset to group domain fields.
     $form['domain_admin_ui'] = [
       '#type' => 'fieldset',
-      '#title' => 'Domain Configuration',
+      '#title' => 'Switch Domain',
       '#weight' => -10,
     ];
 
