@@ -48,8 +48,8 @@ class Config extends CoreConfig {
       $this->name = $domainConfigName;
 
       // Only save override changes.
-      $this->originalData = [];
       $this->data = $this->arrayRecursiveDiff($this->data, $this->originalData);
+      $this->originalData = [];
       parent::save($has_trusted_data);
     }
     catch (\Exception $e) {
