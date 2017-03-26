@@ -47,10 +47,9 @@ class Config extends CoreConfig {
       // Switch to use domain config name and save.
       $this->name = $domainConfigName;
 
-      // Only save changes and existing overrides.
-      $changedData = $this->arrayRecursiveDiff($this->data, $this->originalData);
+      // Only save override changes.
       $this->originalData = [];
-      $this->data = array_merge(array_intersect_key($this->data, $this->moduleOverrides), $changedData);
+      $this->data = $this->arrayRecursiveDiff($this->data, $this->originalData);
       parent::save($has_trusted_data);
     }
     catch (\Exception $e) {
