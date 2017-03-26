@@ -1,11 +1,62 @@
 #domain-admin-ui-switch-form {
-  background: #ffffff;
+  background: #2D2D2D;
+  color:#dddddd;
   border: 1px solid #aaaaaa;
   bottom: 0;
-  padding: 0 15px;
+  padding: 0;
   position: fixed;
-  right: 0;
-  width:250px;
+  left: 0;
+  width:100%;
+  z-index:1000;
+  min-height:68px;
+  font:normal 81.3%/1.538em "Open Sans", sans-serif;
+}
+
+body {
+	margin-bottom:68px !important;
+}
+
+#domain-admin-ui-switch-form fieldset,
+#domain-admin-ui-switch-form .fieldset-wrapper {
+	margin:0;
+	padding:0;
+	float:left;
+	border:none;
+	background:none;
+}
+
+#domain-admin-ui-switch-form select {
+	float:left;
+	color:#111111;
+	border-radius:6px;
+	cursor: pointer;
+  padding: 1px 1.571em 1px 0.5em;
+  border: 1px solid #a6a6a6;
+  background: -webkit-linear-gradient(top, #f6f6f3, #e7e7df);
+  text-shadow: 0 1px hsla(0, 0%, 100%, 0.6);
+  font-size: 0.875rem;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  -webkit-font-smoothing: antialiased;
+  font-size:14px;
+  min-height: 28px;
+  -webkit-appearance:none;
+  margin-left:10px;
+}
+
+#domain-admin-ui-switch-form legend {
+	display:none;
+}
+
+#domain-admin-ui-switch-form label {
+	margin:3px 0 3px 10px;
+	float:left;
+	font-size:14px;
+}
+
+#domain-admin-ui-switch-form .form-item {
+	margin:10px 20px 10px 0;
+	float:left;
 }
 
 #domain-admin-ui-switch-form label[for='edit-config-save-mode']{

@@ -21,7 +21,7 @@ class SwitchForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Only allow access to domain administrators.
-    $form['#access'] = $this->currentUser()->hasPermission('administer domains');
+    $form['#access'] = $this->currentUser()->hasPermission('use domain admin switcher');
     $form = $this->addSwitchFields($form, $form_state);
     return $form;
   }
