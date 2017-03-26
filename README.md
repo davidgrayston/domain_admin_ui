@@ -1,7 +1,7 @@
 Domain Admin UI
 ================
 
-This module allows configuration to be saved for a selected domain.
+This module allows users to switch domain to manage content and save configuration per domain
 
 Dependencies
 ============
