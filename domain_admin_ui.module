@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Allows saving of domain specific configuration through the UI.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Component\Render\FormattableMarkup;
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function domain_admin_ui_preprocess_page(&$variables) {
+  $form = \Drupal::formBuilder()->getForm('Drupal\domain_admin_ui\Form\SwitchForm');
+  $variables['page']['content']['domain_admin_ui_switch'] = $form;
+}
