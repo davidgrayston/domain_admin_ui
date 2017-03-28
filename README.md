@@ -7,3 +7,8 @@ Dependencies
 ============
 
 - Domain Config
+
+Setup
+=====
+
+Add 'domain_admin_ui_selected_domain' to required_cache_contexts in services.yml

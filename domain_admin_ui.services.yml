@@ -27,3 +27,9 @@ services:
 
   config.factory:
     alias: domain_admin_ui.factory
+
+  cache_context.domain_admin_ui_selected_domain:
+    class: Drupal\domain_admin_ui\Cache\Context\SelectedDomain
+    arguments: ['@domain.negotiator']
+    tags:
+      - { name: cache.context }
