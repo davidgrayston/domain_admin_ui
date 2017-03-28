@@ -1,2 +1,4 @@
 use domain admin switcher:
   title: 'Access the domain admin switcher'
+use domain admin language switcher:
+  title: 'Access the domain language switcher'

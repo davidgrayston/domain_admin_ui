@@ -66,6 +66,7 @@ class SwitchForm extends FormBase {
       '#ajax' => [
         'callback' => '::switchCallback',
       ],
+      '#access' => $this->currentUser()->hasPermission('use domain admin language switcher'),
     ];
 
     // Attach CSS to position form.
