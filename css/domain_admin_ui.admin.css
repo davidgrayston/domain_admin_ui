@@ -8,12 +8,12 @@
   left: 0;
   width:100%;
   z-index:1000;
-  min-height:68px;
+  min-height:50px;
   font:normal 81.3%/1.538em "Open Sans", sans-serif;
 }
 
 body {
-	margin-bottom:68px !important;
+	margin-bottom:50px !important;
 }
 
 #domain-admin-ui-switch-form fieldset,
@@ -55,7 +55,7 @@ body {
 }
 
 #domain-admin-ui-switch-form .form-item {
-	margin:10px 20px 10px 0;
+	margin:5px 20px 5px 0;
 	float:left;
 }
 
