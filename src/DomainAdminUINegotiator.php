@@ -71,7 +71,7 @@ class DomainAdminUINegotiator extends DomainNegotiator {
    */
   public function getSelectedDomainId() {
     // Return selected domain ID on admin paths only.
-    return !empty($_SESSION['domain_admin_ui']['config_save_domain']) ? $_SESSION['domain_admin_ui']['config_save_domain'] : '';
+    return !empty($_SESSION['domain_admin_ui']['selected_domain']) ? $_SESSION['domain_admin_ui']['selected_domain'] : '';
   }
 
   /**
@@ -82,13 +82,13 @@ class DomainAdminUINegotiator extends DomainNegotiator {
   public function setSelectedDomain($domain_id) {
     if ($domain = $this->domainLoader->load($domain_id)) {
       // Set session for subsequent request.
-      $_SESSION['domain_admin_ui']['config_save_domain'] = $domain_id;
+      $_SESSION['domain_admin_ui']['selected_domain'] = $domain_id;
       // Switch active domain now so that selected domain configuration can be loaded immediatly.
       // This is primarily for switching domain with AJAX request.
       $this->domainConfigOverrider->setDomain($domain);
     }
     else {
-      $_SESSION['domain_admin_ui']['config_save_domain'] = '';
+      $_SESSION['domain_admin_ui']['selected_domain'] = '';
       parent::negotiateActiveDomain();
     }
   }
@@ -100,7 +100,7 @@ class DomainAdminUINegotiator extends DomainNegotiator {
   public function setSelectedLanguage($language_id) {
     if ($language = \Drupal::languageManager()->getLanguage($language_id)) {
       // Set session for subsequent request.
-      $_SESSION['domain_admin_ui']['config_save_language'] = $language_id;
+      $_SESSION['domain_admin_ui']['selected_language'] = $language_id;
       // Switch active language now so that selected domain configuration can be loaded immediatly.
       // This is primarily for switching domain with AJAX request.
       $this->domainConfigOverrider->setLanguage($language);
@@ -111,7 +111,7 @@ class DomainAdminUINegotiator extends DomainNegotiator {
    * Get the selected language ID.
    */
   public function getSelectedLanguageId() {
-    return !empty($_SESSION['domain_admin_ui']['config_save_language']) ? $_SESSION['domain_admin_ui']['config_save_language'] : '';
+    return !empty($_SESSION['domain_admin_ui']['selected_language']) ? $_SESSION['domain_admin_ui']['selected_language'] : '';
   }
 
   /**
